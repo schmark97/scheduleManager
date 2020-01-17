@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="/style/schedule.css" />
+    <link rel="stylesheet" href="/style/nav.css" />
+    <title>Schedule</title>
+  </head>
+  <body>
+    <%- include('navbar'); -%> 
+    <div class="container">
+        <div class="dropdown">
+            <button onclick="drop()" class="dropbtn">Hónap</button>
+            <div id="Dropdown" class="dropdown-content">
+            <a href="/schedule/month/01">Január</a>
+            <a href="/schedule/month/02">Február</a>
+            <a href="/schedule/month/03">Március</a>
+            <a href="/schedule/month/04">Április</a>
+            <a href="/schedule/month/05">Május</a>
+            <a href="/schedule/month/06">Június</a>
+            <a href="/schedule/month/07">Július</a>
+            <a href="/schedule/month/08">Augusztus</a>
+            <a href="/schedule/month/09">Szeptember</a>
+            <a href="/schedule/month/10">Október</a>
+            <a href="/schedule/month/11">November</a>
+            <a href="/schedule/month/12">December</a>
+
+          </div>
+        </div>
+      <table class="schedule">
+        <tbody>
+          <tr class="schedule-items">
+          <td>Dátum</td>  
+          <td>Kezd.</td>
+          <td>Végz.</td>
+          <td>Alkalmazott</td>
+          <td>Alkalmazott</td>
+          <td></td>
+          <td></td>
+          </tr>
+          <% schedules.forEach(function(schedule){ %>
+          <tr class="schedule-items">
+            <td><%=schedule.date%></td>
+            <td><%=schedule.bTime%></td>
+            <td><%=schedule.eTime%></td>
+            <td><%=schedule.employeeNames[0]%></td>
+            <td><%=schedule.employeeNames[1]%></td>
+            <td><a href="/schedule/edit/<%=schedule._id%>"><button class="edit_button">Szerk.</button></a></td>
+            <td><a href="/schedule/del/<%=schedule._id%>"><button class="delete_button">Tölés</button></a></td
+            
+            </tr>
+          <%}); %>
+        </tbody>
+      </table>
+    </div>
+  </body>
+  <script>
+      function drop() {
+        document.getElementById("Dropdown").classList.toggle("show");
+      }
+      
+      // Close the dropdown if the user clicks outside of it
+      window.onclick = function(event) {
+        if (!event.target.matches('.dropbtn')) {
+          var dropdowns = document.getElementsByClassName("dropdown-content");
+          var i;
+          for (i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+              openDropdown.classList.remove('show');
+            }
+          }
+        }
+      }
+      </script>
+  <script src="/scripts/nav.js"></script>
+</html>

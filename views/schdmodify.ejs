@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="/style/schedule.css" />
+    <link rel="stylesheet" href="/style/nav.css" />
+    <link rel="stylesheet" href="/style/schdmodify.css" />
+    <title>Modify Schedule</title>
+  </head>
+  <body>
+    <%- include('navbar'); -%>
+    <div class="form-container">
+      <form method="POST">
+        <div class="date-ctn">
+          <h2>Dátum</h2>
+          <input
+            type="date"
+            id="date"
+            class="date"
+            name="date"
+            value="<%=(typeof schedule === 'undefined') ? '' : schedule.date%>"
+          />
+        </div>
+        <div class="text">
+          <h2>Kezdés</h2>
+          <h2>Végzés</h2>
+        </div>
+        <div class="times">
+          <input
+            type="time"
+            id="btime"
+            name="btime"
+            class="btime"
+            value="<%=(typeof schedule === 'undefined') ? '' :schedule.bTime%>"
+          />
+
+          <input
+            type="time"
+            id="etime"
+            class="etime"
+            name="etime"
+            value="<%=(typeof schedule === 'undefined') ? '' :schedule.eTime%>"
+          />
+        </div>
+        <div class="text">
+          <h2>Alkalmazott</h2>
+          <h2>Alkalmazott</h2>
+        </div>
+
+        <div class="emps">
+          <select id="emp1" name="emp1" class="emp">
+            <% users.forEach(function(user){ %> <% if(typeof schedule !==
+            'undefined' && user.name === schedule.employeeNames[0]){ %>
+            <option value="<%=user%>" selected><%=user.name%></option>
+            <% } else{ %>
+            <option value="<%=user%>"><%=user.name%></option>
+            <% } %> <% }); %>
+          </select>
+
+          <select id="emp2" name="emp2" class="emp">
+            <% users.forEach(function(user){ %> <% if(typeof schedule !==
+            'undefined' && user.name === schedule.employeeNames[1]){ %>
+            <option value="<%=user%>" selected><%=user.name%></option>
+            <% } else{ %>
+            <option value="<%=user%>"><%=user.name%></option>
+            <% } %> <% }); %>
+          </select>
+        </div>
+        <div class="btns">
+          <input type="submit" class="submit-btn" />
+          <a href="/schedule" "><button class="back-btn">Mégse</button></a>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

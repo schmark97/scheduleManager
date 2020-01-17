@@ -1,0 +1,98 @@
+@font-face {
+  font-family: OpenSans-Regular;
+  src: url("../fonts/OpenSans/OpenSans-Regular.ttf");
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  height: 100%;
+  font-family: OpenSans-Regular, sans-serif;
+  background-image: linear-gradient(
+    90deg,
+    rgb(190, 225, 228),
+    rgb(77, 159, 180),
+    rgb(64, 136, 204)
+  );
+}
+
+.square {
+  background-color: #fff;
+  width: 500px;
+  height: 500px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  border-radius: 1%;
+  transform: translate(-50%, -50%);
+  box-shadow: 5px 5px 5px grey;
+  color: grey;
+  padding-left: 2%;
+  padding-right: 2%;
+}
+
+.logIn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2%;
+  height: 100%;
+}
+
+.links {
+  display: flex;
+  justify-content: space-around;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 2px;
+  height: 40%;
+}
+
+.belepgomb {
+  background-color: rgba(0, 0, 255, 0.808); /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.text-input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+a:link {
+  color: rgb(79, 117, 207);
+}
+
+a:visited {
+  color: rgb(30, 87, 221);
+}
+
+a:hover {
+  color: rgb(132, 0, 255);
+}
+
+a:active {
+  color: blue;
+}
+
+input[type="submit"]:hover {
+  background-color: rgb(0, 110, 255);
+  cursor: pointer;
+}
