@@ -20,6 +20,7 @@
             id="date"
             class="date"
             name="date"
+            required
             value="<%=(typeof schedule === 'undefined') ? '' : schedule.date%>"
           />
         </div>
@@ -33,6 +34,7 @@
             id="btime"
             name="btime"
             class="btime"
+            required
             value="<%=(typeof schedule === 'undefined') ? '' :schedule.bTime%>"
           />
 
@@ -41,6 +43,7 @@
             id="etime"
             class="etime"
             name="etime"
+            required
             value="<%=(typeof schedule === 'undefined') ? '' :schedule.eTime%>"
           />
         </div>

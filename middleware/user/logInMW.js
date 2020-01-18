@@ -13,13 +13,13 @@ module.exports = objectRepository => {
       return next();
     UserModel.findOne({ email: req.body.email }, (err, user) => {
       if (err) {
-        next(err);
+        return next(err);
       }
 
-      if (!user) res.redirect("/schedule");
+      if (!user) return res.redirect("/schedule");
 
       bcrypt.compare(req.body.password, user.password, function(err, valid) {
-        if (err) next(err);
+        if (err) return next(err);
 
         if (valid) {
           //create and asign token
@@ -28,13 +28,14 @@ module.exports = objectRepository => {
           });
           try {
             res.locals.user = user._id;
-            res
+
+            return res
               .cookie("token", token, { httpOnly: true })
               .redirect("/schedule");
           } catch (err) {
-            res.status(400).send(err);
+            return res.status(400).send(err);
           }
-        } else res.redirect("/schedule");
+        } else return res.redirect("/schedule");
       });
     });
   };

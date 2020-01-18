@@ -12,7 +12,7 @@ const logInMW = require("../middleware/user/logInMW");
 const getUserSchedule = require("../middleware/schedule/getUserSchedule");
 const authMW = require("../middleware/user/authMW");
 const logOutMW = require("../middleware/user/logOutMW");
-
+const sortScheduleMW = require("../middleware/schedule/sortScheduleMW");
 module.exports = app => {
   let objectRepository = {
     UserModel: UserModel,
@@ -43,6 +43,7 @@ module.exports = app => {
     authMW,
     getUsersMW(objectRepository),
     getScheduleByMonth(objectRepository),
+    sortScheduleMW(),
     renderMW(objectRepository, "schedule")
   );
   app.use(
@@ -66,6 +67,7 @@ module.exports = app => {
     "/schedule/user/:id",
     authMW,
     getUserSchedule(objectRepository),
+    sortScheduleMW(),
     renderMW(objectRepository, "schedule")
   );
 
@@ -73,6 +75,7 @@ module.exports = app => {
     "/schedule",
     authMW,
     getSchedulesMW(objectRepository),
+    sortScheduleMW(),
     renderMW(objectRepository, "schedule")
   );
 
