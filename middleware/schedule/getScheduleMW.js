@@ -5,11 +5,9 @@ module.exports = objectRepository => {
 
   return (req, res, next) => {
     ScheduleModel.findOne({ _id: req.params.id }, (err, schedule) => {
-      if (err) {
+      if (err || !schedule) {
         return next(err);
       }
-
-      if (!schedule) return res.redirect("/schedule");
 
       res.locals.schedule = schedule;
 
